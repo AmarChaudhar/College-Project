@@ -1,0 +1,181 @@
+import 'package:flutter/material.dart';
+// import 'home.dart';
+// import 'listpage.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SearchPage(),
+    );
+  }
+}
+
+class SearchPage extends StatefulWidget {
+  const SearchPage({Key? key}) : super(key: key);
+
+  @override
+  _SearchPageState createState() => _SearchPageState();
+}
+
+class _SearchPageState extends State<SearchPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // backgroundColor: const Color(0xFF1f1545),
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (BuildContext context) {
+            //       return SearchPage();
+            //     },
+            //   ),
+            // );
+          },
+          icon: const Icon(Icons.home),
+        ),
+        centerTitle: true,
+        // title: const Text('KHOZ SEARCH ENGINE'),
+        backgroundColor: const Color.fromARGB(255, 63, 33, 187),
+        elevation: 1.0,
+        actions: [
+          PopupMenuButton<String>(
+            onSelected: (String result) {
+              // Add your ellipsis button press logic here
+              if (result == 'New tab') {
+                // Navigate to the new tab page
+              } else if (result == 'History') {
+                // Navigate to the history page
+              } else if (result == 'Downloads') {
+                // Navigate to the downloads page
+              } else if (result == 'Bookmarks') {
+                // Navigate to the bookmarks page
+              } else if (result == 'Desktop site') {
+                // Navigate to the desktop site
+              } else if (result == 'Settings') {
+                // Navigate to the settings page
+              } else if (result == 'Help & feedback') {
+                // Navigate to the help & feedback page
+              }
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              const PopupMenuItem<String>(
+                value: 'New tab',
+                child: ListTile(
+                  // leading: Image.asset('assets/new_tab.png'),
+                  title: Text('New tab'),
+                ),
+              ),
+              const PopupMenuItem<String>(
+                value: 'History',
+                child: ListTile(
+                  // leading: Image.asset('assets/history.png'),
+                  title: Text('History'),
+                ),
+              ),
+              const PopupMenuItem<String>(
+                value: 'Downloads',
+                child: ListTile(
+                  // leading: Image.asset('assets/download.png'),
+                  title: Text('Downloads'),
+                ),
+              ),
+              const PopupMenuItem<String>(
+                value: 'Bookmarks',
+                child: ListTile(
+                  // leading: Image.asset('assets/bookmarks.png'),
+                  title: Text('Bookmarks'),
+                ),
+              ),
+              const PopupMenuItem<String>(
+                value: 'Desktop site',
+                child: ListTile(
+                  // leading: Image.asset('assets/desktop_site.png'),
+                  title: Text('Desktop site'),
+                ),
+              ),
+              const PopupMenuItem<String>(
+                value: 'Settings',
+                child: ListTile(
+                  // leading: Image.asset(
+                  // 'assets/settings.png',
+                  // width: 0.2,
+                  // height: 0.3,
+                  // ),
+
+                  title: Text('Settings'),
+                ),
+              ),
+              const PopupMenuItem<String>(
+                value: 'Help & feedback',
+                child: ListTile(
+                  // leading: Image.asset('assets/help.png'),
+                  title: Text('Help & feedback'),
+                ),
+              ),
+            ],
+            // icon: Icon(Icons.info_outline),
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(height: 40),
+            ClipOval(
+              child: Image.asset(
+                'assets/images/photo.png',
+                height: 90,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(height: 1),
+
+            // Text(
+            //   " KHOZ",
+            //   style: TextStyle(
+            //     color: Colors.red,
+            //     fontSize: 22.0,
+            //     fontWeight: FontWeight.bold,
+            //   ),
+            // ),
+            // const SizedBox(height: 0.0),
+
+            Flexible(
+              child: TextField(
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: const Color.fromARGB(255, 127, 109, 199),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(29.0),
+                    borderSide: BorderSide.none,
+                  ),
+                  hintText: "Search for web,apps more...",
+                  prefixIcon: const Icon(Icons.search,
+                      color: Color.fromARGB(255, 98, 46, 163)),
+                ),
+                onSubmitted: (value) {
+                  // print(value);
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
